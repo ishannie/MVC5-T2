@@ -7,13 +7,13 @@ namespace BigSchool.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PoppulateCategoryTable : IMigrationMetadata
+    public sealed partial class AddFollowingNotification : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PoppulateCategoryTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddFollowingNotification));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107050408099_PoppulateCategoryTable"; }
+            get { return "202107100425381_AddFollowingNotification"; }
         }
         
         string IMigrationMetadata.Source

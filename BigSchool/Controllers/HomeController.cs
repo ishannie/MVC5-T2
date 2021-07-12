@@ -1,5 +1,6 @@
 ﻿using BigSchool.Models;
 using BigSchool.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -25,10 +26,16 @@ namespace BigSchool.Controllers
                 .Include(c => c.Category)
                 .Where(c => c.DateTime > DateTime.Now);
 
+            var userId = User.Identity.GetUserId();
+
             var viewModel = new CoursesViewModel
             {
                 UpcommingCourses = upcommingCourses,
-                ShowAction = User.Identity.IsAuthenticated
+                ShowAction = User.Identity.IsAuthenticated,
+                Followings = _dbContext.Followings.Where(f => userId != null && f.FolloweeId == userId).ToList(),
+                Attendances = _dbContext.Attendances.Include(a => a.Course).ToList()
+                
+
             };
             return View(viewModel);
         }
